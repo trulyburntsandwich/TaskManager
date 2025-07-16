@@ -124,9 +124,4 @@ document.addEventListener('DOMContentLoaded', () => {
       clearConfetti();
     }, 2400);
   }
-
-  // Starter tasks
-  addTask('Try dragging me!');
-  addTask('Add your own tasks!');
-  updateLastTaskGlow();
 });
