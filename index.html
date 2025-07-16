@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Shredder Task Manager</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Shredder Task Manager</h1>
+    <form id="add-task-form" autocomplete="off">
+      <input type="text" id="task-input" placeholder="Add a new task" required autocomplete="off">
+      <button type="submit" id="add-task-btn" aria-label="Add Task">+</button>
+    </form>
+    <ul id="task-list"></ul>
+    <!-- Paper shredder is OUTSIDE the form -->
+    <div id="shredder" class="shredder-container" aria-label="Paper Shredder">
+      <!-- Custom SVG Paper Shredder -->
+      <svg id="shredder-svg" width="220" height="120" viewBox="0 0 220 120">
+        <!-- Shredder body -->
+        <rect x="20" y="40" width="180" height="60" rx="14" fill="#23272e" stroke="#444" stroke-width="4"/>
+        <!-- Shredder slot -->
+        <rect x="60" y="50" width="100" height="12" rx="4" fill="#15181c" stroke="#0ff" stroke-width="2"/>
+        <!-- Shredder top silver -->
+        <rect x="30" y="32" width="160" height="18" rx="8" fill="#444a56" />
+        <!-- Top indicator lights -->
+        <circle cx="45" cy="41" r="4" fill="#ff5252"/>
+        <circle cx="60" cy="41" r="4" fill="#ffd600"/>
+        <circle cx="75" cy="41" r="4" fill="#00e676"/>
+        <!-- Control panel -->
+        <rect x="170" y="41" width="28" height="10" rx="3" fill="#23272e" stroke="#444a56" stroke-width="2"/>
+        <circle cx="184" cy="46" r="3" fill="#00b0ff"/>
+        <!-- Shredder teeth -->
+        <g id="teeth">
+          <rect x="65" y="62" width="6" height="10" rx="2" fill="#bdbdbd"/>
+          <rect x="75" y="62" width="6" height="10" rx="2" fill="#bdbdbd"/>
+          <rect x="85" y="62" width="6" height="10" rx="2" fill="#bdbdbd"/>
+          <rect x="95" y="62" width="6" height="10" rx="2" fill="#bdbdbd"/>
+          <rect x="105" y="62" width="6" height="10" rx="2" fill="#bdbdbd"/>
+          <rect x="115" y="62" width="6" height="10" rx="2" fill="#bdbdbd"/>
+          <rect x="125" y="62" width="6" height="10" rx="2" fill="#bdbdbd"/>
+          <rect x="135" y="62" width="6" height="10" rx="2" fill="#bdbdbd"/>
+        </g>
+        <!-- Shredded paper effect (hidden normally, animated in JS) -->
+        <g id="shreds" style="opacity:0;">
+          <rect x="68" y="72" width="2" height="28" rx="1" fill="#fff"/>
+          <rect x="78" y="72" width="2" height="28" rx="1" fill="#fff"/>
+          <rect x="88" y="72" width="2" height="28" rx="1" fill="#fff"/>
+          <rect x="98" y="72" width="2" height="28" rx="1" fill="#fff"/>
+          <rect x="108" y="72" width="2" height="28" rx="1" fill="#fff"/>
+          <rect x="118" y="72" width="2" height="28" rx="1" fill="#fff"/>
+          <rect x="128" y="72" width="2" height="28" rx="1" fill="#fff"/>
+          <rect x="138" y="72" width="2" height="28" rx="1" fill="#fff"/>
+        </g>
+      </svg>
+      <div class="shredder-label">Paper Shredder</div>
+    </div>
+  </div>
+  <canvas id="confetti"></canvas>
+  <script src="confetti.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
