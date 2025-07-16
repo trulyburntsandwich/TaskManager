@@ -17,11 +17,11 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function addTask(text) {
-    if (!text) return;
+    if (!text || text.trim() === '') return; // Fixed: proper validation
     const li = document.createElement('li');
     li.className = 'task-item';
     li.draggable = true;
-    li.textContent = text;
+    li.textContent = text.trim(); // Ensure clean text
 
     li.addEventListener('dragstart', e => {
       li.classList.add('dragging');
@@ -43,12 +43,28 @@ document.addEventListener('DOMContentLoaded', () => {
   form.addEventListener('submit', function(e) {
     e.preventDefault();
     const val = taskInput.value.trim();
+    console.log('Form submitted with value:', val); // Debug line
     if (val) {
       addTask(val);
       taskInput.value = '';
       updateLastTaskGlow();
     }
   });
+
+  // Also add click handler for the button directly (backup)
+  const addButton = document.getElementById('add-task-btn');
+  if (addButton) {
+    addButton.addEventListener('click', function(e) {
+      e.preventDefault();
+      const val = taskInput.value.trim();
+      console.log('Button clicked with value:', val); // Debug line
+      if (val) {
+        addTask(val);
+        taskInput.value = '';
+        updateLastTaskGlow();
+      }
+    });
+  }
 
   // Drag events for shredder
   shredder.addEventListener('dragover', e => {
